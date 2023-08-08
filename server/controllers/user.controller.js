@@ -52,5 +52,37 @@ module.exports = {
   },
   logout: (req,res) => {
     res.clearCookie('userToken').json({message:'You are logged out'})
-  }
+  },
+  getAllUsers : (req, res) => {
+    User.find({})
+    .then(allUsers => {
+      console.log(allUsers);
+      res.json(allUsers);
+      })
+      .catch (err => {
+        console.log(err);
+        res.json,(400).json(err);
+      })
+  },
+  getUser: (req, res) => {
+    User.findOne({username: req.params.username})
+    .then(oneUser => {
+      console.log(oneUser);
+      res.json(oneUser);
+    })
+    .catch(err => {
+      res.json(400).json(err);
+    });
+  },
+  deleteUser: (req, res) => {
+    User.deleteUser({_id: req.params.id})
+    .then(deleteConfirmation => {
+      console.log(deleteConfirmation);
+      res.json(deleteConfirmation);
+    })
+    .catch(err => {
+      console.log(err);
+      res.json(err);
+    });
+  },
 };
