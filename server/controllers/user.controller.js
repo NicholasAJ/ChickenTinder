@@ -74,6 +74,17 @@ module.exports = {
       res.json(400).json(err);
     });
   },
+  updateUser: (req,res) => {
+    User.findOneAndUpdate({_id: req.body._id}, req.body, {new:true})
+    .then(updatedUser => {
+      console.log(updatedUser);
+      res.json(updatedUser);
+    })
+    .catch(err => {
+      console.log("error updating user", err);
+      res.json(400).json(err);
+    });
+  },
   deleteUser: (req, res) => {
     User.deleteUser({_id: req.params.id})
     .then(deleteConfirmation => {
