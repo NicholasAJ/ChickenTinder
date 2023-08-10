@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {navigate, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
-const logout = () => {
+const Logout = () => {
   const navigate = useNavigate();
   axios.post('http://localhost:8000/api/logout', {}, {withCredentials:true})
     .then((res) => {
@@ -19,7 +19,7 @@ const Dashboard = (props) => {
     <div>
       <h1>Welcome to the Dashboard</h1>
       <div>
-        <button onClick={logout}>logout</button>
+        <button onClick={Logout}>logout</button>
       </div>
     </div>
   )
