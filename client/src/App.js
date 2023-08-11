@@ -17,6 +17,16 @@ function App() {
           {/* will need path for edit/update user */}
           {/* will need path for delete tender review */}
           {/* will need path for delete user */}
+
+          {/* select from routes below for the pathways */}
+
+          {/* <Route path="/chickentinder/dash" element={<DisplayAll/>}/>
+          <Route path="/chickentinder/edit/:id" element={<EditReview/>}/>
+          <Route path="/chickentinder/login" element={<LoginUser/>}/>
+          <Route path="/chickentinder/new" element={<CreateReview/>}/>
+          <Route path="/chickentinder/create" element={<CreateUser/>}/> 
+          <Route path="/chickentinder/tender/:id" element={<ViewReview/>}/> */}
+
         </Routes>
       </BrowserRouter>
     </div>
