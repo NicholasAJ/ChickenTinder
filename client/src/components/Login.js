@@ -10,7 +10,7 @@ const Login = (props) => {
     name:''
   })
   const changeHandler = (e) => {
-    setUserLogin({...userLogin, [e.target.email]:e.target.value})
+    setUserLogin({...userLogin, [e.target.name]:e.target.value}) 
   }
   const loginHandler = (e) => {
     e.preventDefault()
