@@ -13,7 +13,7 @@ const Register = (props) => {
   })
 
   const changeHandler = (e) => {
-    setUser({...user, [e.target.email]:e.target.value})
+    setUser({...user, [e.target.name]:e.target.value})
   }
   const submitHandler = (e) => {
     e.preventDefault();
@@ -59,6 +59,10 @@ const Register = (props) => {
         </div>
         <Link to={'/login'}>Already have an account?</Link>
       </form>
+
+      <div>
+        <input type='text'placeholder='HI'></input>
+      </div>
     </div>
   )
 }
