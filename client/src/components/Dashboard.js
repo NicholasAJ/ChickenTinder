@@ -2,8 +2,9 @@ import React, {useEffect,useState} from 'react';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom'
 
-const Dashboard = (props) => {
+const Dashboard = ({ user }) => {
   const [allReviews, setAllReviews] = useState([]);
+  const [error, setError] = useState({});
   const navigate = useNavigate()
   const Logout = () => {
     axios.post('http://localhost:8000/api/logout', {}, {withCredentials:true})
@@ -23,9 +24,19 @@ const Dashboard = (props) => {
       })
       .catch((err) => {
         console.log(err);
-        console.log(err.response);
+        console.log('status: ' + err.response?.status);
+        setError(err);
       });
   }, []);
+
+  if (error.response?.status !== 404) {
+    return (
+      <div>
+        <h1>YOU MUST BE LOGGED IN </h1>
+        <Link to='/'>Login here</Link>
+      </div>
+    )
+  }
 
   return(
     <div>

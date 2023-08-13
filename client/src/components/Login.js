@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
-const Login = (props) => {
+const Login = ({setUser}) => {
   const navigate = useNavigate();
   const [userLogin,setUserLogin] = useState({
     email:'',
     password:'',
     name:''
-  })
+  });
+
   const changeHandler = (e) => {
     setUserLogin({...userLogin, [e.target.name]:e.target.value}) 
   }
@@ -16,13 +17,18 @@ const Login = (props) => {
     e.preventDefault()
     axios.post('http://localhost:8000/api/login', userLogin, {withCredentials:true})
       .then((res) => {
-        console.log(res);
+        console.log(JSON.stringify(res, null, 2));
+        setUser(res.data.user)
         navigate('/dashboard')
       })
       .catch((err) => {
         console.log(err)
       })
   }
+
+  // if (Object.keys(token).length) {
+  //   return <Dashboard/>
+  // }
 
   return (
     <div>

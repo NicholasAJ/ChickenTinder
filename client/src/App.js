@@ -1,17 +1,21 @@
 import './App.css';
+import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 
 function App() {
+
+  const [user, setUser] = useState({});
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Register/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/login' element={<Login setUser={setUser}/>}/>
+          <Route path='/dashboard' element={<Dashboard user={user}/>}/>
           {/* will need path for see single review - /tender/review */}
           {/* will need path for edit/update review */}
           {/* will need path for edit/update user */}
