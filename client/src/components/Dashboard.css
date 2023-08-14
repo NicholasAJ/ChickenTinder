@@ -1,0 +1,16 @@
+.displayContainer {
+  margin: 1px solid black;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.displayHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+.displayBody {
+  display: flex;
+  flex-direction: column;
+}

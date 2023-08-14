@@ -1,3 +1,4 @@
+import "./Dashboard.css";
 import React, {useEffect,useState} from 'react';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom'
@@ -17,7 +18,7 @@ const Dashboard = ({ user }) => {
   }
   useEffect(() => {
     axios
-      .get('http://localhost:8000/review', {withCredentials:true})
+      .get(`http://localhost:8000/review/${user._id}`, {withCredentials:true})
       .then((res) => {
         console.log(res.data);
         setAllReviews(res.data);
@@ -28,15 +29,6 @@ const Dashboard = ({ user }) => {
         setError(err);
       });
   }, []);
-
-  if (error.response?.status === 404) {
-    return (
-      <div>
-        <h1>YOU MUST BE LOGGED IN </h1>
-        <Link to='/login'>Login here</Link>
-      </div>
-    )
-  }
 
   return(
     <div>

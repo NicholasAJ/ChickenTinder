@@ -26,7 +26,7 @@ const CreateReview = ({ user }) => {
         flavor,
         size,
         comments,
-        createdBy: user._id
+        createdBy: user._id //so next line add author: user.username, update everywhere this touches (model, add, update etc)
       }, {withCredentials:true})
       .then ((res) => {
         console.log(res.data);

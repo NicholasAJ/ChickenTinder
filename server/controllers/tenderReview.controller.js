@@ -13,7 +13,8 @@ const createReview = (req,res) => {
 };
 
 const getAllReviews = (req, res) => {
-  Review.find({createdBy: req.params.username})
+  const username = req.params.username;
+  Review.find({createdBy: username}) // check this route
   .then(allReviews => {
     console.log(allReviews);
     res.json(allReviews);
