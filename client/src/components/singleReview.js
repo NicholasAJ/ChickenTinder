@@ -1,5 +1,3 @@
-//reading review will need to reflect the 1 to many relationship to track user to post
-
 import '../App.css';
 import '../components/singleReview.css'
 import React, {useEffect,useState} from "react";
@@ -11,25 +9,29 @@ const ViewReview = ({ user }) => {
   // const {id} = useParams();
   const [oneReview, setOneReview] = useState({});
   // const navigate = useNavigate();
+  //create a way to query database with user id to get review id, set review id into state and pass it into the route
 
   useEffect(() => {
-    console.log("hello")
+    console.log(user,oneReview)
     axios
-      .get(`http://localhost:8000/review/${username}/${id}`)
+      .get(`http://localhost:8000/review/${user._id}/${oneReview._id}`, {withCredentials:true})
+      // .get(`http://localhost:8000/review/single/${id}`, {withCredentials:true})
       .then((res) => {
         console.log(res.data);
         setOneReview(res.data);
       })
       .catch((err) => {
         console.log(err);
+        // navigate('/dashboard')
       });
-  },[id]);
+  },[]);
 
   return (
     <div>
       <div className='reviewContainer'>
         <div className='reviewTitle'>
           <h1>Your Tender</h1>
+          <Link to="/dashboard">Home</Link>
         </div>
             <div className='singleReview'>
               <div className='reviewHeader'>

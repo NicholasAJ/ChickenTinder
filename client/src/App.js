@@ -23,6 +23,7 @@ function App() {
           <Route path='/' element={<Register/>}/>
           <Route path='/login' element={<Login setUser={setUser}/>}/>
           <Route path='/dashboard' element={<Dashboard user={user}/>}/>
+          
           <Route path='/newtender' element={<CreateReview user={user}/>}/>
           {/* will need path for edit/update review */}
           <Route path='/edittender' element={<EditReview user={user}/>}/>

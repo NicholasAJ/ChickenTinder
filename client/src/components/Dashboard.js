@@ -47,9 +47,9 @@ const Dashboard = ({ user }) => {
         return(
           <div className="displayContainer" key={review._id}>
             <div className="displayHeader">
-              {/* <Link to={`/chickentinder/tender/${review._id}`}> */}
+              <Link to={`/singletender`}>
               <p>{review.restaurantName}</p>
-              {/* </Link> */}
+              </Link>
               <p>Price: {review.price}</p>
             </div>
             <div className="displayBody">
