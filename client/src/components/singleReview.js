@@ -6,16 +6,16 @@ import React, {useEffect,useState} from "react";
 import axios from "axios";
 import {useParams,Link,useNavigate} from "react-router-dom";
 
-const ViewReview = () => {
+const ViewReview = ({ user }) => {
   console.log("Hello")
-  const {id} = useParams();
+  // const {id} = useParams();
   const [oneReview, setOneReview] = useState({});
   // const navigate = useNavigate();
 
   useEffect(() => {
     console.log("hello")
     axios
-      .get(`http://localhost:8000/review/${id}`)
+      .get(`http://localhost:8000/review/${username}/${id}`)
       .then((res) => {
         console.log(res.data);
         setOneReview(res.data);
@@ -24,19 +24,6 @@ const ViewReview = () => {
         console.log(err);
       });
   },[id]);
-
-  // const HandleDelete = (id) => {
-  //   axios
-  //     .delete(`http://localhost:8000/review/${id}`)
-  //     .then ((response) => {
-  //       console.log("successful deletion");
-  //       console.log(response);
-  //       navigate('/chickentinder/dash')
-  //     })
-  //     .catch((err) => {
-  //       console.log("error deleting this review", err);
-  //     });
-  // };
 
   return (
     <div>
@@ -57,14 +44,9 @@ const ViewReview = () => {
               </div>
             </div>
             <div >
-              <Link to={`/chickentinder/edit/${id}`}>
+              <Link to={'/edittender'}>
                 <button className='button'>Edit your Tender</button>
               </Link>
-            </div>
-            <div>
-              {/* <button onClick={() => HandleDelete()}>
-                Delete
-              </button> */}
             </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
-const EditReview = (user) => {
+const EditReview = ({user}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [restaurantName, setRestaurantName] = useState("");
@@ -33,17 +33,18 @@ const EditReview = (user) => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:8000/review`, {
+      .put('http://localhost:8000/review', {
         restaurantName,
         price,
-        size,
         crispiness,
         flavor,
-        comments
-      })
+        size,
+        comments,
+        createdBy:user._id
+      }, {withCredentials:true})
       .then((res) => {
         console.log(res.data)
-        navigate("/chickentinder/dash");
+        navigate("/dashboard");
       })
       .catch ((err) => {
         console.log(err);
