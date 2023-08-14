@@ -1,13 +1,10 @@
-//edit to include "foreign key" to allow user to be connect to post. 
-//"1 to many"
-
 import '../App.css';
 import '../components/singleReview.css'
 import React, {useState} from "react";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
-const CreateReview = () => {
+const CreateReview = ({ user }) => {
   const [restaurantName, setRestaurantName] = useState("");
   const [price, setPrice] = useState("");
   const [flavor, setFlavor] = useState("");
@@ -19,16 +16,21 @@ const CreateReview = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(user);
     axios
       .post("http://localhost:8000/review",
-      {restaurantName,
-        price, flavor,
+      {
+        restaurantName,
+        price,
         crispiness,
+        flavor,
         size,
-        comments})
+        comments,
+        createdBy: user._id
+      }, {withCredentials:true})
       .then ((res) => {
         console.log(res.data);
-        navigate('/chickentinder/dash');
+        navigate('/dashboard');
       })
       .catch((err) => {
         console.log(err);
@@ -47,15 +49,15 @@ const CreateReview = () => {
           <form onSubmit={submitHandler}>
             <div className='reviewHeader'>
               <label>Restaurant Name</label>
-              {errors.restaurantName ? <p>{errors.restaurantName.message}</p> : null}
+              {errors?.restaurantName ? <p>{errors.restaurantName?.message}</p> : null}
               <input
                 type='text'
                 name='restaurantName'
                 onChange={(e) => setRestaurantName(e.target.value)}
-                // value={(restaurantName)}
+                value={(restaurantName)}
               />
               <label>Price</label>
-              {errors.price ? <p>{errors.price.message}</p>: null}
+              {errors?.price ? <p>{errors.price.message}</p>: null}
               <input 
                 type='text'
                 name='price'
@@ -65,50 +67,50 @@ const CreateReview = () => {
             </div>
             <div className='radiobutton'>
               <label>Crispiness</label>
-              {errors.crispiness ? <p>{errors.crispiness.message}</p>: null}
+              {errors?.crispiness ? <p>{errors.crispiness.message}</p>: null}
               <div className='radioButton'>
-              <select
-                  name="crispiness"
-                  onChange={(e) => setCrispiness(e.target.value)}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+                <input type='radio' name='crispiness' id='crispiness1' value={1} onChange={(e) => setCrispiness(e.target.value)}></input>
+                <label htmlFor='crispiness1'>1</label>
+                <input type='radio' name='crispiness' id='crispiness2' value={2} onChange={(e) => setCrispiness(e.target.value)}></input>
+                <label htmlFor='crispiness2'>2</label>
+                <input type='radio' name='crispiness' id='crispiness3' value={3} onChange={(e) => setCrispiness(e.target.value)}></input>
+                <label htmlFor='crispiness3'>3</label>
+                <input type='radio' name='crispiness' id='crispiness4' value={4} onChange={(e) => setCrispiness(e.target.value)}></input>
+                <label htmlFor='crispiness4'>4</label>
+                <input type='radio' name='crispiness' id='crispiness5' value={5} onChange={(e) => setCrispiness(e.target.value)}></input>
+                <label htmlFor='crispiness5'>5</label>
               </div>
             </div>
             <div className='radiobutton'>
               <label>Flavor</label>
-              {errors.flavor ? <p>{errors.flavor.message}</p>: null}
+              {errors?.flavor ? <p>{errors.flavor.message}</p>: null}
               <div className='radioButton' >
-                <select
-                  name="flavor"
-                  onChange={(e) => setFlavor(e.target.value)}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+              <input type='radio' name='flavor' id='flavor1' value={1} onChange={(e) => setFlavor(e.target.value)}></input>
+              <label htmlFor='flavor1'>1</label>
+              <input type='radio' name='flavor' id='flavor2' value={2} onChange={(e) => setFlavor(e.target.value)}></input>
+              <label htmlFor='flavor2'>2</label>
+              <input type='radio' name='flavor' id='flavor3' value={3} onChange={(e) => setFlavor(e.target.value)}></input>
+              <label htmlFor='flavor3'>3</label>
+              <input type='radio' name='flavor' id='flavor4' value={4} onChange={(e) => setFlavor(e.target.value)}></input>
+              <label htmlFor='flavor4'>4</label>
+              <input type='radio' name='flavor' id='flavor5' value={5} onChange={(e) => setFlavor(e.target.value)}></input>
+              <label htmlFor='flavor5'>5</label>
               </div>
             </div>
             <div className='radiobutton' >
               <label>Size</label>
-              {errors.size ? <p>{errors.size.message}</p>: null}
+              {errors?.size ? <p>{errors.size.message}</p>: null}
               <div className='radioButton'>
-              <select
-                  name="flavor"
-                  onChange={(e) => setSize(e.target.value)}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+                <input type='radio' name='size' id='size1' value={1} onChange={(e) => setSize(e.target.value)}></input>
+                <label htmlFor='size1'>1</label>
+                <input type='radio' name='size' id='size2' value={2} onChange={(e) => setSize(e.target.value)}></input>
+                <label htmlFor='size2'>2</label>
+                <input type='radio' name='size' id='size3' value={3} onChange={(e) => setSize(e.target.value)}></input>
+                <label htmlFor='size3'>3</label>
+                <input type='radio' name='size' id='size4' value={4} onChange={(e) => setSize(e.target.value)}></input>
+                <label htmlFor='size4'>4</label>
+                <input type='radio' name='size' id='size5' value={5} onChange={(e) => setSize(e.target.value)}></input>
+                <label htmlFor='size5'>5</label>
               </div>
             </div>
             <div className='commentContainer'>

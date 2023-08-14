@@ -1,5 +1,14 @@
 const UserController = require('../controllers/user.controller')
 
+const Users = require('../controllers/user.controller');
+const { authenticate } = require('../config/jwt.config');
+module.exports = app => {
+  // app.post("/api/register", Users.register);
+  // app.post("/api/login", Users.login);
+  // this route now has to be authenticated
+  app.get("/api/users", authenticate, Users.getAll);
+}
+
 module.exports = app => {
   app.post('/api/register', UserController.registerUser)
   //cannot use put, has to be post
@@ -8,4 +17,5 @@ module.exports = app => {
   app.get('',UserController.getUser)
   app.get('',UserController.getAllUsers)
   app.delete('',UserController.deleteUser)
+  // get logged user route, verify or decode in JWT library, cadens lecture videos
 }

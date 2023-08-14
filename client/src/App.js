@@ -1,32 +1,34 @@
 import './App.css';
+import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Register from './components/Register'
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
+import Header from './components/header';
+import CreateReview from './components/newReview'
+import EditReview from './components/editReview';
+import ViewReview from './components/singleReview'
 
 function App() {
+
+  const [user, setUser] = useState({});
+
   return (
     <div className="App">
+      <div>
+      {/* <Header/> */}
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Register/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/dashboard' element={<Dashboard/>}/>
-          {/* will need path for see single review - /tender/review */}
+          <Route path='/login' element={<Login setUser={setUser}/>}/>
+          <Route path='/dashboard' element={<Dashboard user={user}/>}/>
+          <Route path='/newtender' element={<CreateReview user={user}/>}/>
           {/* will need path for edit/update review */}
+          <Route path='/edittender' element={<EditReview user={user}/>}/>
+          {/* will need path for see single review - /tender/review */}
+          <Route path='/singletender' element={<ViewReview user={user}/>}/>
           {/* will need path for edit/update user */}
-          {/* will need path for delete tender review */}
-          {/* will need path for delete user */}
-
-          {/* select from routes below for the pathways */}
-
-          {/* <Route path="/chickentinder/dash" element={<DisplayAll/>}/>
-          <Route path="/chickentinder/edit/:id" element={<EditReview/>}/>
-          <Route path="/chickentinder/login" element={<LoginUser/>}/>
-          <Route path="/chickentinder/new" element={<CreateReview/>}/>
-          <Route path="/chickentinder/create" element={<CreateUser/>}/> 
-          <Route path="/chickentinder/tender/:id" element={<ViewReview/>}/> */}
-
         </Routes>
       </BrowserRouter>
     </div>

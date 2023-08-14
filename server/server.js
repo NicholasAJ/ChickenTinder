@@ -12,9 +12,11 @@ require('./config/mongoose.config');
 require('dotenv').config();
 
 app.use(express.json(), express.urlencoded({extended:true}));
-// require('./routes/review.routes')(app);
 const UserRoutes = require('./routes/user.routes');
 UserRoutes(app);
 require('./routes/user.routes')(app);
 
+const ReviewRoutes = require('./routes/tenderReview.routes')
+ReviewRoutes(app);
+require('./routes/tenderReview.routes')(app);
 app.listen(port, () => console.log(`Listening on port: ${port}`) );
