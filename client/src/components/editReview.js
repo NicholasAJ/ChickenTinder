@@ -1,7 +1,7 @@
 import '../App.css';
 import '../components/singleReview.css'
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams, Link} from "react-router-dom";
 import axios from "axios";
 
 const EditReview = ({user}) => {
@@ -58,7 +58,8 @@ const EditReview = ({user}) => {
     <div>
       <div className='reviewContainer'>
         <div className='reviewTitle'>
-          <p>Edit your Tender Review</p>
+          <h1>Edit your Tender Review</h1>
+          <Link to="/dashboard">Home</Link>
         </div>
         <div className='editReview'>
             <form onSubmit={submitHandler}>
