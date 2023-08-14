@@ -17,7 +17,7 @@ const Dashboard = ({ user }) => {
   }
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/review`)
+      .get('http://localhost:8000/review', {withCredentials:true})
       .then((res) => {
         console.log(res.data);
         setAllReviews(res.data);
@@ -29,23 +29,28 @@ const Dashboard = ({ user }) => {
       });
   }, []);
 
-  if (error.response?.status !== 404) {
+  if (error.response?.status === 404) {
     return (
       <div>
         <h1>YOU MUST BE LOGGED IN </h1>
-        <Link to='/'>Login here</Link>
+        <Link to='/login'>Login here</Link>
       </div>
     )
   }
 
   return(
     <div>
+      {!user._id ?       
+      <div>
+        <h1>YOU MUST BE LOGGED IN </h1>
+        <Link to='/login'>Login here</Link>
+      </div>: <div>
       <div>
         <h1>Welcome to the Dashboard</h1>
         <button onClick={Logout}>logout</button>
       </div>
       <div className="mainDisplay">
-        <h1 className="dashHeader">Your Chicken Tenders</h1>
+        <h1 className="dashHeader">{user.name}, Your Chicken Tenders M'Lord</h1>
         {allReviews.map((review,index) => {
         return(
           <div className="displayContainer" key={review._id}>
@@ -65,12 +70,13 @@ const Dashboard = ({ user }) => {
         })}
         <div>
           <button id="button">
-            {/* <Link to={`/chickentinder/new`}> */}
+            <Link to={`/newtender`}>
               Add a Tender
-            {/* </Link> */}
+            </Link>
           </button>
         </div>
       </div>
+    </div>}
     </div>
   )
 }
