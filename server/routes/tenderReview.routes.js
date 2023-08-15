@@ -5,9 +5,8 @@ module.exports = (app) => {
   app.post('/review', authenticate, ReviewController.createReview);
   app.get('/review/:username', authenticate,ReviewController.getAllReviews);
   //:username is a variable name/placeholder
-  // app.get('/review/:username/:id', authenticate, ReviewController.getOneReview);
-  app.get('/review/single/:id', authenticate, ReviewController.getOneReview);
+  app.get('/review/:username/:id', authenticate, ReviewController.getOneReview);
   // user._id, reviewID
-  app.put('/review', authenticate, ReviewController.updateReview);
+  app.put('/review/:username/:id', authenticate, ReviewController.updateReview);
   app.delete('/review/:username/:id', authenticate, ReviewController.deleteReview,);
 }

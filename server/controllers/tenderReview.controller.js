@@ -38,7 +38,8 @@ const getOneReview = (req, res) => {
 };
 
 const updateReview = (req, res) => {
-  Review.findOneAndUpdate({_id: req.body._id}, req.body, {new:true})
+  console.log(JSON.stringify(req.body, null, 2))
+  Review.findOneAndUpdate({_id: req.params.id}, req.body, {new:true})
   .then(updatedReview =>{
     console.log(updatedReview);
     res.json(updatedReview);

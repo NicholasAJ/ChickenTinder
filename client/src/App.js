@@ -8,6 +8,7 @@ import Header from './components/header';
 import CreateReview from './components/newReview'
 import EditReview from './components/editReview';
 import ViewReview from './components/singleReview'
+import UserSettings from './components/UserSettings'
 
 function App() {
 
@@ -23,13 +24,13 @@ function App() {
           <Route path='/' element={<Register/>}/>
           <Route path='/login' element={<Login setUser={setUser}/>}/>
           <Route path='/dashboard' element={<Dashboard user={user}/>}/>
-          
           <Route path='/newtender' element={<CreateReview user={user}/>}/>
           {/* will need path for edit/update review */}
-          <Route path='/edittender' element={<EditReview user={user}/>}/>
+          <Route path='/edittender/:reviewid' element={<EditReview user={user}/>}/>
           {/* will need path for see single review - /tender/review */}
-          <Route path='/singletender' element={<ViewReview user={user}/>}/>
+          <Route path='/dashboard/:reviewid' element={<ViewReview user={user}/>}/>
           {/* will need path for edit/update user */}
+          <Route path='/user/settings' element={<UserSettings user={user}/> }/>
         </Routes>
       </BrowserRouter>
     </div>

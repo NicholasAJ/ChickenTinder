@@ -5,26 +5,35 @@ import axios from "axios";
 import {useParams,Link,useNavigate} from "react-router-dom";
 
 const ViewReview = ({ user }) => {
+  const navigate = useNavigate();
   console.log("Hello")
-  // const {id} = useParams();
-  const [oneReview, setOneReview] = useState({});
-  // const navigate = useNavigate();
-  //create a way to query database with user id to get review id, set review id into state and pass it into the route
+  const {reviewid} = useParams();
+  const [selectedReview, setSelectedReview] = useState({});
+
 
   useEffect(() => {
-    console.log(user,oneReview)
+    console.log(user)
+    console.log(reviewid)
     axios
-      .get(`http://localhost:8000/review/${user._id}/${oneReview._id}`, {withCredentials:true})
-      // .get(`http://localhost:8000/review/single/${id}`, {withCredentials:true})
+      .get(`http://localhost:8000/review/${user._id}/${reviewid}`, {withCredentials:true})
       .then((res) => {
         console.log(res.data);
-        setOneReview(res.data);
+        setSelectedReview(res.data);
       })
       .catch((err) => {
         console.log(err);
         // navigate('/dashboard')
       });
   },[]);
+
+  const deleteHandler = () => {
+    axios.delete(`http://localhost:8000/review/${user._id}/${reviewid}`, {withCredentials:true})
+      .then(res => {
+        // removeFromDom(reviewid)
+        navigate('/dashboard');
+      })
+      .catch(err => console.log(err))
+  }
 
   return (
     <div>
@@ -35,21 +44,27 @@ const ViewReview = ({ user }) => {
         </div>
             <div className='singleReview'>
               <div className='reviewHeader'>
-                <p id='restaurantName'>{oneReview.restaurantName}</p>
-                <p>Price: {oneReview.price}</p>
+                <p id='restaurantName'>{selectedReview.restaurantName}</p>
+                <p>Price: {selectedReview.price}</p>
               </div>
               <div className='reviewBody'>
-                <p>Flavor: {oneReview.flavor}</p>
-                <p>Crispiness: {oneReview.crispiness}</p>
-                <p>Size: {oneReview.size}</p>
-                <p>Comments: {oneReview.comments}</p>
+                <p>Flavor: {selectedReview.flavor}</p>
+                <p>Crispiness: {selectedReview.crispiness}</p>
+                <p>Size: {selectedReview.size}</p>
+                <p>Comments: {selectedReview.comments}</p>
               </div>
             </div>
             <div >
-              <Link to={'/edittender'}>
+              <Link to={`/edittender/${reviewid}`}> 
+              {/* change to edittender/${reviewid} */}
                 <button className='button'>Edit your Tender</button>
               </Link>
             </div>
+            <div>
+                <button onClick={(e) =>{deleteHandler()}}>
+                  Delete
+                </button>
+              </div>
       </div>
     </div>
   )
