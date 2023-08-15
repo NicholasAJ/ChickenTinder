@@ -16,6 +16,7 @@ module.exports = app => {
   app.post('/api/logout', UserController.logout)
   app.get('',UserController.getUser)
   app.get('',UserController.getAllUsers)
-  app.delete('',UserController.deleteUser)
+  app.put('/api/user/update/:username', authenticate, UserController.updateUser)
+  app.delete('/api/user/:username',UserController.deleteUser)
   // get logged user route, verify or decode in JWT library, cadens lecture videos
 }

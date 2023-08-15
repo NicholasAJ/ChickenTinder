@@ -21,7 +21,7 @@ const Register = (props) => {
     axios.post('http://localhost:8000/api/register', user, {withCredentials:true})
       .then((res) => {
         console.log(res, "register user front end");
-        navigate('/dashboard')
+        navigate('/login')
       })
       .catch((err) => {
         console.log(err);

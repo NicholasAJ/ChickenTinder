@@ -40,6 +40,9 @@ const Dashboard = ({ user }) => {
       <div>
         <h1>Welcome to the Dashboard</h1>
         <button onClick={Logout}>logout</button>
+        <Link to='/user/settings'>
+        <button>To User Settings</button>
+        </Link>
       </div>
       <div className="mainDisplay">
         <h1 className="dashHeader">{user.name}, Your Chicken Tenders M'Lord</h1>
@@ -47,7 +50,7 @@ const Dashboard = ({ user }) => {
         return(
           <div className="displayContainer" key={review._id}>
             <div className="displayHeader">
-              <Link to={`/singletender`}>
+              <Link to={`/dashboard/${review._id}`}>
               <p>{review.restaurantName}</p>
               </Link>
               <p>Price: {review.price}</p>
