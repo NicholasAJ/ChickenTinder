@@ -45,9 +45,10 @@
   border-radius: 2%;
   box-shadow: 10px 5px 5px gray;
   margin-bottom: 10px;
-  width: 300px;
+  width: 400px;
   background-color: floralwhite;
   padding: 30px;
+  height: fit-content;
 }
 
 .displayHeader {
@@ -57,10 +58,18 @@
   justify-content: space-evenly;
 }
 
-
 .displayBody {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
+}
+
+.Comments{
+  width: 150px;
+}
+
+#CommentText {
+  overflow-wrap: break-word;
+  background-color: lightgrey;
 }

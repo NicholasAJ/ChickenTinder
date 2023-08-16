@@ -67,9 +67,9 @@ const Dashboard = ({ user }) => {
               <p>Crispiness: {review.crispiness}</p>
               <p>Size: {review.size}</p>
               </div>
-              <div>
+              <div className="Comments">
                 <p>Comment: </p>
-                <p>{review.comments}</p>
+                <p id="CommentText">{review.comments}</p>
               </div>
             </div>
           </div>)
