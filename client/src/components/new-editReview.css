@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   background-color: goldenrod;
+  width: 100%;
 }
 
 .ReviewInternal {

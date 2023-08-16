@@ -36,7 +36,12 @@ const UserSettings = ({ user }) => {
 
   return(
     <>
-    <h1> Hello </h1>
+    <h1> User Settings </h1>
+    <Link to="/dashboard">
+              <button>
+                Home
+              </button>
+            </Link>
     <div>
       <form>
         <div>

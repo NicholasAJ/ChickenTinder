@@ -1,4 +1,4 @@
-import './new-editReview.css';
+// import './new-editReview.css';
 import '../components/singleReview.css'
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link} from "react-router-dom";
@@ -71,7 +71,6 @@ const EditReview = ({user}) => {
         <div className="ReviewInternal">
           <h1>Chicken Tinder</h1>
           <div className="ReviewHeaderRight">
-            <button onClick={Logout} className="Logout">logout</button>
             <Link to='/user/settings'>
             <button>To User Settings</button>
             </Link>
@@ -80,6 +79,7 @@ const EditReview = ({user}) => {
                 Home
               </button>
             </Link>
+            <button onClick={Logout} className="Logout">logout</button>
           </div>
         </div>
       </div>

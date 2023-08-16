@@ -50,6 +50,7 @@ const CreateReview = ({ user }) => {
 
   return(
     <div className='reviewContainer'>
+      
       <div className="ReviewHeader">
         <div className="ReviewInternal">
           <h1>Chicken Tinder</h1>
