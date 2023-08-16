@@ -1,0 +1,33 @@
+.LoginBody {
+  margin: 0px auto;
+  background-color: blanchedalmond;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  background-color: whitesmoke;
+  padding: 10px;
+  width: 250px;
+  height: 100px;
+}
+
+.LoginInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.LoginLabel{
+  margin-right: 2px;
+}
+
+#LoginButton {
+  background-color: palevioletred;
+}

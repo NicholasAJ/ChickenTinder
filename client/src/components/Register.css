@@ -1,0 +1,22 @@
+.RegisterBody {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: blanchedalmond;
+  height: 1000px;
+}
+
+.RegisterForm {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-evenly;
+  margin-top: 0px;
+  width: 400px;
+  height: 400px;
+  padding: 5px;
+  border: 1px solid black;
+  background-color: whitesmoke;
+}

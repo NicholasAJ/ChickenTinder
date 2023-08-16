@@ -31,35 +31,46 @@ const Dashboard = ({ user }) => {
   }, []);
 
   return(
-    <div>
+    <div className="DashboardBody">
       {!user._id ?       
       <div>
         <h1>YOU MUST BE LOGGED IN </h1>
         <Link to='/login'>Login here</Link>
       </div>: <div>
-      <div>
-        <h1>Welcome to the Dashboard</h1>
-        <button onClick={Logout}>logout</button>
-        <Link to='/user/settings'>
-        <button>To User Settings</button>
-        </Link>
+
+      <div className="DashboardHeader">
+        <div className="DashHeaderInternal">
+          <h1>Chicken Tinder</h1>
+          <div className="DashboardHeaderRight">
+            <button onClick={Logout} className="Logout">logout</button>
+            <Link to='/user/settings'>
+            <button>To User Settings</button>
+            </Link>
+          </div>
+        </div>
       </div>
+
       <div className="mainDisplay">
-        <h1 className="dashHeader">{user.name}, Your Chicken Tenders M'Lord</h1>
+        <h1>{user.name}, Your Chicken Tenders</h1>
         {allReviews.map((review,index) => {
         return(
           <div className="displayContainer" key={review._id}>
             <div className="displayHeader">
               <Link to={`/dashboard/${review._id}`}>
-              <p>{review.restaurantName}</p>
+              <p className="RestName">{review.restaurantName}</p>
               </Link>
               <p>Price: {review.price}</p>
             </div>
             <div className="displayBody">
+              <div>
               <p>Flavor: {review.flavor}</p>
               <p>Crispiness: {review.crispiness}</p>
               <p>Size: {review.size}</p>
-              <p>Comment: {review.comments}</p>
+              </div>
+              <div>
+                <p>Comment: </p>
+                <p>{review.comments}</p>
+              </div>
             </div>
           </div>)
         })}

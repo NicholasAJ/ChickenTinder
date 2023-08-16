@@ -1,3 +1,4 @@
+import './Login.css'
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -31,18 +32,18 @@ const Login = ({setUser}) => {
   // }
 
   return (
-    <div>
+    <div className='LoginBody'>
       <h2>Login</h2>
-      <form onSubmit={loginHandler}>
-        <div>
-          <label>Email</label>
+      <form onSubmit={loginHandler} className='LoginForm'>
+        <div className='LoginInput'>
+          <label className='LoginLable'>Email: </label>
           <input type='text' name='email' value={userLogin.email} onChange={changeHandler}/>
         </div>
-        <div>
-          <label>Password</label>
+        <div className='LoginInput'>
+          <label className='LoginLabel'>Password: </label>
           <input type='password' name='password' value={userLogin.password} onChange={changeHandler}/>
         </div>
-        <button>Login</button>
+        <button id='LoginButton'>Login</button>
       </form>
       <Link to={'/'}>Don't have an account? Click here to find your tendies</Link>
     </div>

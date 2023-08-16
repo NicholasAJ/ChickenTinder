@@ -1,3 +1,4 @@
+import "./Register.css"
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -29,7 +30,12 @@ const Register = (props) => {
   }
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <div className="RegisterBody">
+      <div>
+        <h1>Chicken Tinder</h1>
+        <p>Register for Tendies</p>
+      </div>
+      <form onSubmit={submitHandler} className="RegisterForm">
         <div>
           <label>Username:</label>
           <input type='text' onChange={changeHandler} value={user.username} name='username'/>
@@ -60,9 +66,6 @@ const Register = (props) => {
         </div>
         <Link to={'/login'}>Already have an account?</Link>
       </form>
-
-      <div>
-        <input type='text'placeholder='HI'></input>
       </div>
     </div>
   )

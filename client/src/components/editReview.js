@@ -1,4 +1,4 @@
-import '../App.css';
+import './new-editReview.css';
 import '../components/singleReview.css'
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link} from "react-router-dom";
@@ -14,6 +14,16 @@ const EditReview = ({user}) => {
   const [size, setSize] = useState(0);
   const [comments, setComment] = useState("");
   const [errors,setErrors] = useState({});
+
+  const Logout = () => {
+    axios.post('http://localhost:8000/api/logout', {}, {withCredentials:true})
+      .then((res) => {
+        navigate('/')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   useEffect(() => {
     axios.get(`http://localhost:8000/review/${user._id}/${reviewid}`, {withCredentials:true})
@@ -56,14 +66,31 @@ const EditReview = ({user}) => {
   };
 
   return(
-    <div>
-      <div className='reviewContainer'>
+    <div className='reviewContainer'>
+      <div className="ReviewHeader">
+        <div className="ReviewInternal">
+          <h1>Chicken Tinder</h1>
+          <div className="ReviewHeaderRight">
+            <button onClick={Logout} className="Logout">logout</button>
+            <Link to='/user/settings'>
+            <button>To User Settings</button>
+            </Link>
+            <Link to="/dashboard">
+              <button>
+                Home
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className='ReviewBlock'>
         <div className='reviewTitle'>
           <h1>Edit your Tender Review</h1>
-          <Link to="/dashboard">Home</Link>
         </div>
-        <div className='editReview'>
+        <div className='Review'>
             <form onSubmit={submitHandler}>
+
               <div className='reviewHeader'>
                 <label>Restaurant Name</label>
                 {errors?.restaurantName ? <p>{errors?.restaurantName?.message}</p> : null}
@@ -82,7 +109,8 @@ const EditReview = ({user}) => {
                   value={(price)}
                 />
               </div>
-              <div className='radiobutton'>
+
+              <div className='RadioButtonGroup'>
                 <label>Crispiness</label>
                 {errors?.crispiness ? <p>{errors?.crispiness?.message}</p>: null}
                 <div className='radioButton'>
@@ -98,8 +126,8 @@ const EditReview = ({user}) => {
                   <label for='crispiness5'>5</label>
                 </div>
               </div>
-              flavor
-              <div className='radiobutton'>
+
+              <div className='RadioButtonGroup'>
                 <label>Flavor</label>
                 {errors?.flavor ? <p>{errors?.flavor?.message}</p>: null}
                 <div className='radioButton' >
@@ -116,7 +144,7 @@ const EditReview = ({user}) => {
                 </div>
               </div>
 
-              <div className='radiobutton' >
+              <div className='RadioButtonGroup' >
                 <label>Size</label>
                 {errors?.size ? <p>{errors?.size?.message}</p>: null}
                 <div className='radioButton'>
@@ -140,7 +168,6 @@ const EditReview = ({user}) => {
                   value={(comments)}
                 />
               </div>
-
               <div>
                 <button type='submit'>Edit your Tender</button>
               </div>

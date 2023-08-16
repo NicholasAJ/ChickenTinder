@@ -1,16 +1,66 @@
-.displayContainer {
-  margin: 1px solid black;
-  width: fit-content;
+.DashboardBody {
+  display: flex;
+  flex-direction: column;
+  background-color: blanchedalmond;
+  height: 1000px;
+}
+
+.DashboardHeader {
+  padding: 5px, 20px;
+  border-bottom: 1px solid tan;
+  display: flex;
   justify-content: center;
+  background-color: goldenrod;
+}
+
+.DashHeaderInternal {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+}
+
+.DashboardHeaderRight {
+  margin-left: 800px;
+  display: flex;
+  width: 200px;
+  flex-direction: row;
+  vertical-align: center;
+  justify-content: space-between;
+  
+}
+
+.Logout {
+  height: 25px;
+}
+
+.mainDisplay {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.displayContainer {
+  border: 1px solid black;
+  border-radius: 2%;
+  box-shadow: 10px 5px 5px gray;
+  margin-bottom: 10px;
+  width: 300px;
+  background-color: floralwhite;
+  padding: 30px;
 }
 
 .displayHeader {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  justify-content: space-evenly;
 }
+
 
 .displayBody {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }

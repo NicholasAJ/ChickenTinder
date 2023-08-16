@@ -1,0 +1,74 @@
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: blanchedalmond;
+  height: 1000px;
+}
+
+.ReviewHeader {
+  padding: 5px, 20px;
+  border-bottom: 1px solid tan;
+  display: flex;
+  justify-content: center;
+  background-color: goldenrod;
+}
+
+.ReviewInternal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ReviewHeaderRight {
+  margin-left: 800px;
+  display: flex;
+  width: 300px;
+  flex-direction: row;
+  vertical-align: center;
+  justify-content: space-between;
+}
+
+.Logout {
+  height: 25px;
+}
+
+.ReviewBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Review {
+  border: 1px solid black;
+  width: 500px;
+  height: 250px;
+  padding: 10px;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.RadioButtonGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+.radioButton {
+  margin-top: 10px;
+}
+
+.commentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-top: 15px;
+  margin-left: 30px;
+}
+
+#submitButton {
+  margin-top: 10px;
+}
