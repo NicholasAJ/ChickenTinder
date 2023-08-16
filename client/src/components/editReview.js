@@ -88,7 +88,7 @@ const EditReview = ({user}) => {
         <div className='reviewTitle'>
           <h1>Edit your Tender Review</h1>
         </div>
-        <div className='Review'>
+        <div className='ReviewEdit'>
             <form onSubmit={submitHandler}>
 
               <div className='reviewHeader'>

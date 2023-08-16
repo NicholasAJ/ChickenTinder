@@ -42,6 +42,15 @@
   width: 500px;
   height: 250px;
   padding: 10px;
+  background-color: floralwhite;
+}
+
+.ReviewEdit {
+  border: 1px solid black;
+  width: 500px;
+  height: 250px;
+  padding: 10px;
+  background-color: floralwhite;
 }
 
 .reviewHeader {
