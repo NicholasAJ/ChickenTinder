@@ -1,5 +1,5 @@
-// import './new-editReview.css';
-import '../components/singleReview.css'
+import './new-editReview.css';
+// import '../components/singleReview.css'
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams, Link} from "react-router-dom";
 import axios from "axios";
@@ -12,7 +12,7 @@ const EditReview = ({user}) => {
   const [flavor, setFlavor] = useState(0);
   const [crispiness, setCrispiness] = useState(0);
   const [size, setSize] = useState(0);
-  const [comments, setComment] = useState("");
+  const [comments, setComments] = useState("");
   const [errors,setErrors] = useState({});
 
   const Logout = () => {
@@ -33,7 +33,7 @@ const EditReview = ({user}) => {
       setFlavor(res.data.flavor);
       setCrispiness(res.data.crispiness);
       setSize(res.data.size);
-      setComment(res.data.comment);
+      setComments(res.data.comment);
     })
     .catch((err) => {
       console.log(err)
@@ -114,7 +114,8 @@ const EditReview = ({user}) => {
                 <label>Crispiness</label>
                 {errors?.crispiness ? <p>{errors?.crispiness?.message}</p>: null}
                 <div className='radioButton'>
-                  <input type='radio' name='crispiness' id='crispiness1' value={1} onChange={(e) => setCrispiness(e.target.value)}></input>
+                  <input type='radio' name='crispiness' id='crispiness1' value={1} onChange={(e) => setCrispiness(e.target.value)}
+                  ></input>
                   <label htmlFor='crispiness1'>1</label>
                   <input type='radio' name='crispiness' id='crispiness2' value={2} onChange={(e) => setCrispiness(e.target.value)}></input>
                   <label htmlFor='crispiness2'>2</label>
@@ -164,11 +165,11 @@ const EditReview = ({user}) => {
                 <label>comments</label>
                 <input type='text'
                   name='comments'
-                  onChange={(e) => setComment(e.target.value)}
+                  onChange={(e) => setComments(e.target.value)}
                   value={(comments)}
                 />
               </div>
-              <div>
+              <div className='editReviewButton'>
                 <button type='submit'>Edit your Tender</button>
               </div>
             </form>
