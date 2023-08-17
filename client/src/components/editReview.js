@@ -33,7 +33,7 @@ const EditReview = ({user}) => {
       setFlavor(res.data.flavor);
       setCrispiness(res.data.crispiness);
       setSize(res.data.size);
-      setComments(res.data.comment);
+      setComments(res.data.comments);
     })
     .catch((err) => {
       console.log(err)
